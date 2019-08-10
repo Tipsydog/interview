@@ -1,0 +1,38 @@
+.marginProblem{
+  background: black;
+  min-height: 200px;
+  overflow: hidden        /* 若没有这个值p标签的margin会塌陷 */
+}
+p {
+  height: 50px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  background: red;
+}
+
+.floatProblem{
+  margin-top: 100px;
+  background: black;
+  min-height: 100px;
+}
+.fp_left{
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+.fp_rigth{
+  height: 110px;
+  background: yellow;
+  overflow: hidden;
+}
+.floatClear{
+  margin-top: 100px;
+  background: red;
+  /* overflow: hidden; */
+  float: left;
+}
+.fc_float{
+  float: left;
+  font-size: 30px
+}

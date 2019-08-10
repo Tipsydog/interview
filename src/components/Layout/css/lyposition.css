@@ -1,0 +1,28 @@
+.containerp{
+  margin: 0;
+  padding: 0;
+  min-height: 100px;
+  position: relative;
+}
+.leftp{
+  position: absolute;
+  left: 0;
+  width: 300px;
+  background-color: antiquewhite;
+  min-height: 100px;
+}
+.rightp{
+  position: absolute;
+  right: 0;
+  width: 300px;
+  background-color: aqua;
+  min-height: 100px;
+
+}
+.centerp{
+  position: absolute;
+  left: 300px;
+  right: 300px;
+  background-color: aquamarine;
+  min-height: 100px;
+}

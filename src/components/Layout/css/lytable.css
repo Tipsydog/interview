@@ -1,0 +1,24 @@
+.containert{
+  margin: 0;
+  padding: 0;
+  min-height: 100px;
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+.leftt{
+  display: table-cell;
+  width: 300px;
+  min-height: 100px;
+  background-color: bisque;
+}
+.rightt{
+  display: table-cell;
+  width: 300px;
+  min-height: 100px;
+  background-color: blue;
+}
+.centert{
+  display: table-cell;
+  background-color: blueviolet;
+}

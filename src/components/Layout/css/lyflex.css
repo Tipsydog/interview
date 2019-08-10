@@ -1,0 +1,21 @@
+.containerfl{
+  margin: 0;
+  padding: 0;
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+}
+.leftfl{
+  width: 300px;
+  min-height: 100px;
+  background-color: bisque;
+}
+.rightfl{
+  width: 300px;
+  min-height: 100px;
+  background-color: blue;
+}
+.centerfl{
+  flex: 1;
+  background-color: blueviolet;
+}
