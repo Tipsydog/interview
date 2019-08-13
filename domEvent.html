@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>domEvent</title>
+  <style>
+    .domEvent {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      min-height: 100px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .domEvent div {
+      height: 200px;
+      width: 200px;
+    }
+
+    .first {
+      background: black;
+    }
+
+    .second {
+      background: red;
+    }
+
+    .third {
+      background: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <section class='domEvent'>
+    <div class='first' id='first'>firstDiv</div>
+    <div class='second' id='second'>secondDiv</div>
+    <div class='third' id='third'>thirdDiv</div>
+  </section>
+
+  <script>
+    var first = document.getElementById('first')
+    const second = document.getElementById('second')
+    const third = document.getElementById('third')
+
+    var eve = new Event('customEvent')    // 自定义事件
+
+    first.addEventListener('customEvent', function () {     // first节点监听custom方法
+      console.log('first a has been dispatched')    
+    })
+    second.addEventListener('customEvent', function () {    // second节点监听custom方法
+      second.style.background = 'black'
+      console.log('点击first节点改变second颜色')      
+    })
+
+    // 事件的触发
+    first.addEventListener('click', function () {   // 当点击first的时候执行
+      second.dispatchEvent(eve)    // second节点执行eve方法
+    })
+    second.addEventListener('click',function(){
+      first.style.background = 'red'
+      first.dispatchEvent(eve)    
+    })
+
+  </script>
+</body>
+
+</html>

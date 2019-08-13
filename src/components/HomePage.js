@@ -13,6 +13,8 @@ class HomePage extends React.Component{
           <span>点击跳转到三栏布局界面</span> </Link>
         <Link to='/bfc' >
           <span>点击跳转到块级格式化上下文界面</span> </Link>
+        <Link to='/domevent' >
+          <span>自定义DOM事件</span> </Link>
       </div>
     )
   }

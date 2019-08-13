@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 
 import Layoutex from './components/Layout/Layout'
 import Bfc from './components/Bfc'
+import DomEvent from './components/DomEvent'
 import HomePage from './components/HomePage'
 
 // 意思是Header=Layout.Header
@@ -24,6 +25,7 @@ class App extends Component {
                             <Switch>
                                 <Route path='/layout' component={Layoutex}></Route>
                                 <Route path='/bfc' component={Bfc}></Route>
+                                <Route path='/domevent' component={DomEvent}></Route>
                                 
                                 <Route path='/' component={HomePage}></Route>
                             </Switch>    
