@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Y原型链</title>
+</head>
+<body>
+  <script>
+    function Parent4 (){
+      this.name = 'parent4'
+    }
+    function Child4(){
+      this.type = 'child4'
+      Parent4.call(this)
+    }
+    Child4.prototype = Parent4.prototype
+    var shili = new Child4
+    console.log(shili.name)
+    </script>
+</body>
+</html>
