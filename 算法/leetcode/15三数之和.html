@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>三数之和</title>
+</head>
+<body>
+  <script>
+    let nums = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
+    var result = function(nums){
+      let res = []
+      nums.sort(function(a,b){return a-b})
+      console.log(nums)
+      if(nums[0]>0 || nums[nums.length-1]<0 || nums.length<3){return res}
+      for(let k = 0; k<nums.length;k++){
+        if(nums[k]>0){break;}
+        if(k>0 && nums[k] === nums[k-1]){continue;}
+        let i =k+1 
+          j= nums.length-1
+          target = 0 - nums[k]
+          // console.log(k,i,j,target,nums[i]+nums[j])
+        while(i<j){
+          if(nums[i]+nums[j]==target){
+            res.push([nums[k],nums[i],nums[j]])
+            while(i<j && nums[i] == nums[i+1]) i++;
+            while(i<j && nums[j] == nums[j-1]) j++;
+            i++; j--
+          }else if(nums[i]+nums[j]<target){
+            i++
+            }else{
+              j--
+            }
+        }
+      }
+      return res
+    }
+    console.log(result(nums))
+  </script>
+</body>
+</html>

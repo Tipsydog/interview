@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [1,5,7,2]
+    var result=[]
+    parseInt()
+  function getNum (arr){
+    let a = arr[0]
+    let b = arr[1]
+    let p = arr[2]
+    let q = arr[3]
+    let count = 0
+    while(a<b){
+        count++
+        debugger
+        if(a + p < b){
+            p = q*p
+        }else if (a+p>=b){
+          // debugger
+            result.push(count)
+            break;
+        }
+    }
+}
+getNum(arr)
+// for(let i=0;i<n;i++){
+//     print(result[i]);
+// }
+console.log(result)
+
+  
+  </script>
+</body>
+</html>

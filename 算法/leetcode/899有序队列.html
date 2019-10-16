@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function orderlyQueue(self, s, k){
+        if (k > 1){
+            var lst = list(s)
+            lst.sort()
+            return ''.join(lst)
+            }
+        min_char = min(Set(s))
+        var ans = s
+        for(let i=0; i<s.length;i++){
+          if (s[i] == min_char){
+                ans = min(ans, s[i:] + s[:i])
+                }
+        }
+        return ans
+    }
+
+  </script>
+</body>
+</html>

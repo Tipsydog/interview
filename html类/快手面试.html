@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    for(var i=0 ;i<130 ;i++){
+      if(i%2==1 && i%3==2 && i%5==4 && i%6==5 && i%7==0){
+        console.log(i)
+      }
+    }
+    </script> -->
+
+    <script>
+        var a = 19
+        var arr = []
+
+        function jie (a){
+        var b = a.toString().split('')
+          console.log(b)
+        
+        var sum1 = qiuhe(b)  // 求和
+
+        console.log(sum1)
+        // 判断相加是否得1，不是的话递归
+        if (sum1 ==1){
+          console.log(sum1)
+          return true
+        }else{
+          arr.push(sum1)
+          console.log(arr)
+          if(arr.indexOf(sum1)){
+            return false
+          }
+          jie(sum1)  // 递归
+        }
+      }
+
+      function qiuhe(b){
+          var he = 0
+          for(let i=0;i<b.length;i++){
+            he = b[i] * b[i]
+          }
+          return he
+        }
+
+      // 执行函数
+      jie(a)
+
+    </script>
+</body>
+</html>

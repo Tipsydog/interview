@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>腾讯笔试</title>
+</head>
+<body>
+  // 第二题
+  <script>
+  var year = 2019
+  var month = 13
+  var day = 30
+  var d = new Date(year, month, day)
+  year = d.getFullYear()
+  month = d.getMonth()
+  console.log(year,month)
+
+
+  var isRun = year%4==0 && year%100 !=0 || year%400 ==0 ? true : false
+  if(month == 2 && isRun == true && day>29){
+    day = day-29+31
+  }else if(day>28 && month ==2){
+    day = day-28+30
+  }
+
+  if ( month<13 && day>30 && month==4 || month==6 || month==9 || month==11 && day>30 ){
+    day = day-30+31
+    console.log(day)
+  }
+  console.log(day,month,year)
+Date.prototype.format = function(fmt) { 
+     var o = { 
+        "M+" : this.getMonth(),                 //月份 
+        "d+" : this.getDate(),                    //日 
+        "h+" : this.getHours(),                   //小时 
+        "m+" : this.getMinutes(),                 //分 
+        "s+" : this.getSeconds(),                 //秒 
+        "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+        "S"  : this.getMilliseconds()             //毫秒 
+    }; 
+    // console.log(this.getMonth())
+    if(/(y+)/.test(fmt)) {
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+    }
+     for(var k in o) {
+        if(new RegExp("("+ k +")").test(fmt)){
+             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+         }
+     }
+    return fmt; 
+} 
+var time = new Date(year, month, day).format("yyyy-MM-dd");
+console.log(time);
+
+  </script>
+</body>
+</html>

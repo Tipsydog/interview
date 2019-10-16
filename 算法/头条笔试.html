@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>找出数组中任意两个差不大于n的集合</title>
+  <style>
+    div {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 10px solid red;
+      border-top: 10px solid red;
+      border-bottom: 10px solid transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    var n = parseInt(readline())
+    var arrFirst =[]
+    var arrSecond =[]
+    var sumTime=0
+
+    for(let i=0;i<n;i++){
+      var line = readline()
+      var arrOnly = line.split(' ')
+      arrOnly.map( (item, index) => {
+        arrOnly[index] = parseInt(item)
+      })
+      sumTime=sumTime+arrOnly[1]
+      arrFirst.push(arrOnly[0])
+      arrSecond.push(arrOnly[1])
+    }
+    sumTime= sumTime+arr[0][0]
+
+    var duiji = 0
+      max = 0
+    function Find(){
+      for(let i =0;i<sumTime;i++){
+        if(duiji != 0){
+          duiji--
+        }
+        if(arrFirst.indexOf(i)){
+          duiji = duiji + arrSecond[i]
+        }
+        Math.max(max, duiji)
+      }
+    }
+    Find()
+    var result = []
+    result.push(sumTime,max)
+    console.log(result.join(' '))
+
+  </script>
+</body>
+
+</html>

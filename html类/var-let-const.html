@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>var-let-const</title>
+</head>
+
+<body>
+  <script>
+    // const a = [1, 2, 3, 4, 5]
+    // a[2] = 5432   //  可以
+    // // a = [1,2,3,4,5]   // 报错
+    // console.log(a)
+
+    // // 不绑定全局作用域
+    // var c = 1;
+    // window.c // 1
+    // let b = 1;
+    // window.b // undefined
+
+    // // 临时性死区
+    // var value = "global";
+    // // 例子1
+    // (function () {
+    //   console.log(value);
+    //   let value = 'local';
+    // }());
+    // // 例子2
+    // {
+    //   console.log(value);
+    //   const value = 'local';
+    // };
+
+    // Babel转换
+    // let value = 1;
+
+    // var value = 1;
+
+    // if (true) {
+    //   let value = 1;
+    // }
+    // console.log(value); // Uncaught ReferenceError: value is not defined
+    // if (true) {
+    //   var _value = 1;
+    // }
+    // console.log(value);
+
+    let value = 1;
+    {
+      let value = 2;
+    }
+    value = 3;
+  </script>
+</body>
+
+</html>

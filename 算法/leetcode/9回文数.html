@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>回文数</title>
+</head>
+<body>
+  <script>
+    var num = 12321
+    var result = function (num){
+      if(num<0 || num%10 == 0 && num!=0) {return false}
+      var newNum = 0
+      while(newNum < num){
+        newNum = newNum * 10 + num%10
+        num = parseInt(num/10)              // js除法默认包含浮点类型，所以需要舍弃小数点后的数字
+      }
+      if(num == newNum || num == parseInt(newNum/10)) {return true}else{return false}
+    }
+    console.log(result(num))
+  </script>
+</body>
+</html>

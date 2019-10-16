@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>最少货物数量装箱问题</title>
+</head>
+<body>
+  <script>
+    var prices = [2,5,8]
+    var budget = 18
+    function solution(prices, budget) {
+      if(budget==0){return 0}
+      var flag = 10000
+      prices.map(i => {
+        if (budget - i < 0){return false}
+        var subProb = solution(prices, budget-i)
+        //子问题无解
+        if (subProb == -1){return false}
+        flag = Math.min(flag, subProb+1)
+      })
+      return flag == 10000 ? -1 : flag
+      }
+      solution(prices, budget)
+      console.log(solution(prices, budget))
+  </script>
+</body>
+</html>

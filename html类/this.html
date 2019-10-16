@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>this</title>
+</head>
+
+<body>
+  <script>
+    //     var name = "windowsName";
+    //     var a = function a() {
+    //       var name = "Cherry";
+    //       console.log(this.name);          // windowsName
+    //       console.log("inner:" + this);    // inner: Window
+    //     }
+    //     // console.log("outer:" + this)         // outer: Window
+
+    //     let obj = {
+    //       name: "xuweihao",
+    //       we: a
+
+    //     }
+    // obj.we()
+
+    // var name = "windowsName";
+    // var a = {
+    //   name: "xuweihao",
+    //   // name: "Cherry",
+    //   fn: function () {
+    //     console.log(this.name);     
+    //   }
+    // }
+
+    // a.fn()    // xuweihao
+    // var f = a.fn;
+    // f();      // windowsName
+
+    // // "use strict"
+    // var name = "windowsName";
+    // function fn() {
+    //   var name = 'Cherry';
+    //   function innerFunction() {
+    //     console.log(this.name);      // windowsName
+    //   }
+    //   innerFunction();
+    // }
+    // fn()
+
+
+    var name = "windowsName";
+    var a = {
+      name: "Cherry",
+      func1: function () {
+        console.log(this.name)
+      },
+      func2: function () {
+        setTimeout(function() {
+          this.func1()
+        }, 100);
+      }
+    };
+    a.func2()
+
+    // var name = "windowsName";
+    // var a = {
+    //   name: "Cherry",
+    //   func1: function () {
+    //     console.log(this.name)
+    //   },
+    //   func2: function () {
+    //     setTimeout(() => {
+    //       this.func1()
+    //     }, 100);
+    //   }
+    // };
+    // a.func2()     // Cherry
+
+    // 语法
+    // fun.apply(thisArg, [argsArray])
+    // fun.call(thisArg, arg1, arg2, ...)
+
+    // //apply、call、bind
+    // var a = {
+    //   name: "Cherry",
+    //   fn: function (a, b) {
+    //     console.log(a + b)
+    //   }
+    // }
+    // var b = a.fn;
+    // b.apply(a, [1, 2])     // 3
+
+
+    // var a = {
+    //   name: "Cherry",
+    //   fn: function (a, b) {
+    //     console.log(a + b)
+    //   }
+    // }
+    // var b = a.fn;
+    // b.call(a, 1, 2)       // 3
+
+    // var a = {
+    //   name: "Cherry",
+    //   fn: function (a, b) {
+    //     console.log(a + b)
+    //   }
+    // }
+
+    // var b = a.fn;
+    // b.bind(a, 1, 2)()           // 3
+
+    // // 构造函数:
+    // function myFunction(arg1, arg2) {
+    //   this.firstName = arg1;
+    //   this.lastName = arg2;
+    // }
+    // // This    creates a new object
+    // var a = new myFunction("Li", "Cherry");
+    // a.lastName;                      // Cherry
+
+    // // new的过程
+    // var a = new myFunction("Li", "Cherry");
+    // new myFunction{
+    //   var obj = {};
+    //   obj.__proto__ = myFunction.prototype;
+    //   var result = myFunction.call(obj, "Li", "Cherry");
+    //   return typeof result === 'obj' ? result : obj;
+    // }
+
+
+
+
+  </script>
+</body>
+
+</html>

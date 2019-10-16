@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var m = 4
+    var n = 3
+    var sum = m + n
+    var awin = 0
+      var bwin = 0
+    function suan(m, n) {
+     
+      for (let i = 1; i < m + n + 1; i++) {
+        if (i > 0 && i % 3 == 1) {
+          awin!==0 ? awin = awin + awin * (n / (m + n)) : awin = n/(m+n)
+          m = m - 1
+           suan(m, n)
+        } else if (i > 0 && i % 3 == 2) {
+          bwin!==0 ? bwin = bwin + bwin * (n / (m + n)) : bwin = n/(m+n)
+          m = m - 1
+           suan(m, n)
+        } else if (i > 0 && i % 3 == 0) {
+          var a = m - 1
+          var b = n - 1
+           suan(m, b)
+           suan(a, n)
+        }
+      }
+    }
+    suan(m, n)
+    console.log(awin)
+  </script>
+</body>
+
+</html>

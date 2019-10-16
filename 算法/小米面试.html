@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>找出数组中任意两个差不大于n的集合</title>
+</head>
+
+<body>
+  <script>
+    var a = [5, 32, 5, 1, 31, 70, 30, 8]
+    var b = [1, 2, 3, 4, 5, 8]
+    const n = 2
+    let newArr = []
+    // function Foo(arr, n){
+    //   arr = arr.sort(function(a,b){return a-b})
+    //   // console.log(arr)
+    //   let i=0
+    //   while(i<arr.length){
+    //     let j=i+1
+    //     while(j<=arr.length){
+    //       if(arr[j]-arr[i] <= 2 && j-i==1){
+    //         newArr.push(arr[i],arr[j])
+    //         j++
+    //       }else if(arr[j]-arr[i] <= 2 && j-i!=1){
+    //         newArr.push(arr[j])
+    //         // console.log(a[j])
+    //         j++
+    //       }else{
+    //         i=j
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
+    // Foo(b, n)  // 对于b数组有bug
+    //----------------------------------------
+    function Goo(arr, n) {
+      arr = arr.sort(function (a, b) { return a - b })
+      // console.log(arr)
+      let i = 0
+      while (i < arr.length) {
+        let j = i + 1
+        if(i!=0 && a[i]-a[i-1]<=2){
+          newArr.push(i)
+        }
+        while (j <= arr.length) {
+          if (arr[j] - arr[i] <= 2) {
+            // debugger
+            if(newArr.includes(i)){
+              if(newArr.includes(j)){
+                console.log(j)
+                j++
+              }else{
+                console.log(j)
+                newArr.push(j)
+                j++
+              }
+            }else{
+              console.log(i)
+              newArr.push(i,j)
+              j++
+            }
+          }else{
+            i=j
+            break
+          }
+        }
+      }
+    }
+    Goo(a, n)  // 对于b数组有bug
+    // console.log(newArr)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>不稳定排序</title>
+</head>
+<body>
+  <script>
+    var arr = [32,54,39,467,2,45674,2,3675,34,21,6,7,43,1,87,65,9,4]
+
+// 选择
+    // function xuanze (arr){
+    //   for(let i=0; i<arr.length-1; i++){
+    //     let min = i
+    //     for(let j=i+1; j<arr.length; j++){
+    //       if(arr[j]<arr[min]){
+    //         min = j
+    //       }
+    //     }
+    //     if (min != i){
+    //       let temp = arr[i]
+    //       arr[i] = arr[min]
+    //       arr[min] = temp
+    //     }
+    //   }
+    // }
+    // xuanze(arr)
+
+// 快排
+      function kuaisu (arr, start, end){
+        if(start > end){return}
+        let i = start
+        let j = end
+        let pivot = arr[start]
+
+        while (i !== j){
+        // if(start > end){return}
+          while(arr[j] >= pivot && i<j){    // 从右起找第一个小于pivot的数
+            j--
+          }
+          while(arr[i] <= pivot && i<j){    // 从左起找第一个大于pivot的数
+            i++
+          }
+          if (i < j) {                // 交换i-j
+             let tmp = arr[i];
+             arr[i] = arr[j];
+             arr[j] = tmp;
+        }
+      }
+
+      arr[start] = arr[i]
+      arr[i] = pivot
+
+      kuaisu(arr, start, i-1)   // 递归左
+      kuaisu(arr, i+1, end)   // 递归右
+    }
+    kuaisu(arr, 0, arr.length-1)
+    console.log(arr)
+    </script>
+</body>
+</html>

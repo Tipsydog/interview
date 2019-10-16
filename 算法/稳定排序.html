@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>稳定排序</title>
+</head>
+<body>
+  <script>
+    var arr = [32,54,39,467,2,45674,2,3675,34,21,6,7,43,1,87,65,9,4]
+
+// 冒泡
+    for (let i=1;i<=arr.length;i++){
+      for (let j=0;j<=arr.length-i;j++){
+        if (arr[j] > arr[j+1]){
+          let temp = arr[j]
+          arr[j] = arr[j+1]
+          arr[j+1] = temp
+        }
+      }
+    }
+
+    console.log(arr)
+  </script>
+</body>
+</html>

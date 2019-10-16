@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两数之和</title>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    var nums = [21,32,653,6745,23,3,76234,1,235,9867,524,2,6,5]
+    var target = 655
+    function liangshuzhihe(){
+      var arr = {}
+      for(let i=0; i<nums.length;i++){
+        if (arr[nums[i]] === undefined){
+          arr[target - nums[i]] = i
+        }else{
+          console.log(arr[nums[i]], i)
+        }
+        console.log("arr",arr)
+      }
+    }
+    liangshuzhihe()
+  </script>
+</body>
+</html>

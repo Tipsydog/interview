@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  var arr=["zhang san","li si","wang wu","wang liu","wang qi","zhang wu","li liu"];
+
+  function countNameFuc(arr){
+    var countName=[];
+      for(let i=0;i<arr.length;i++){
+          if(countName[arr[i].split(" ")[0]]!==undefined){
+              countName[arr[i].split(" ")[0]]+=1
+          }else{
+              countName[arr[i].split(" ")[0]]=1
+          }
+      }
+      countName.forEach((value,index) => {
+        console.log(value)
+      })
+      for (let i in countName){
+
+        
+      }
+
+      // function compare(property) {
+      //   return function (a, b) {
+      //     var value1 = a[property];
+      //     var value2 = b[property];
+      //     console.log(11)
+      //     return value1 - value2;
+      //   }
+      // }
+      // countName.sort(compare(0))
+    console.log(countName)
+}
+      countNameFuc(arr)
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3无重复字符的最长子串</title>
+</head>
+<body>
+  <script>
+    const str = "abcabcdbeb"
+    
+    function findMaxStr( str1 ){
+      let arr= {}
+      let start = 0 
+        end = 0
+        maxNum = 0
+      while(end<str.length){
+        if(end <str.length && arr[str[end]] == undefined || arr[str[end]] == 0 ){
+          arr[str[end]] ? arr[str[end]]++ : arr[str[end]] = 1
+          end++
+          console.log(start,end)
+        }else{
+          arr[str[start]] = arr[str[start]]  - 1
+          // console.log(arr[str[end]])
+          start++
+          console.log(start,end)
+        }
+        maxNum = Math.max(maxNum,end-start)
+      }
+      console.log(maxNum)
+    }
+    findMaxStr(str)
+
+    // function a(str){
+    //   let a = 0
+    //   let arr= {}
+    //   let start = 0 
+    //     end = 0
+      
+    //     arr [str[2]] = arr [str[2]] +1
+    //   console.log(0)
+    // }
+    // a(str)
+
+
+
+    </script>
+</body>
+</html>
