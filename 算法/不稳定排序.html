@@ -29,6 +29,7 @@
     // xuanze(arr)
 
 // 快排
+
       function kuaisu (arr, start, end){
         if(start > end){return}
         let i = start
@@ -57,6 +58,38 @@
       kuaisu(arr, i+1, end)   // 递归右
     }
     kuaisu(arr, 0, arr.length-1)
+    console.log(arr)
+    </script>
+    <script>
+    var arr = [32,54,39,467,2,45674,2,3675,34,21,6,7,43,1,87,65,9,4]
+    console.log(...arr,12,12,12,12)
+    // 找出第k大数
+    function findK(arr, left, right, k){
+      var i = left
+      var j = right
+      var pivot = arr[left]
+
+      while(i!==j){
+        while(arr[j]<=pivot && i<j){ j-- }
+        while(arr[i]>=pivot && i<j){ i++ }
+
+        if(i<j){
+          let tmp = arr[i]
+          arr[i]=arr[j]
+          arr[j]=tmp
+        }
+      }
+      arr[left] = arr[i]
+      arr[i]=pivot
+      if(i+1 == k){
+        console.log(arr[i])
+      }else if (i+1 > k){
+        findK(arr, left, i-1, k)
+      }else{
+        findK(arr, i+1, right, k)
+      }
+    }
+    findK(arr, 0, arr.length-1, 8)
     console.log(arr)
     </script>
 </body>

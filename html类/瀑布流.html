@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>瀑布流</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #box{
+    width: 90%;
+    margin: 0px auto;
+    background: black;
+  }
+  #box ul{
+    list-style: none;
+    float: left;
+    width: 24%;
+    min-height: 20px;
+    margin: 5px;
+    background: cadetblue;
+  }
+  #box ul img {
+    width: 100%;
+    margin: 5px;
+  }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+  </div>
+  <script type="text/javascript">
+    var ulArr = document.getElementsByTagName("ul");
+    function createImg (count) {
+        for(var i = 0; i < count; i++) {
+            //创建图片 和 li
+            var img = document.createElement("img");
+            img.src = "img/" + i + ".png";
+            var li = document.createElement("li");
+            li.appendChild(img)
+            
+            //假设一个最短的ul
+            var minHeightUl = ulArr[0];
+            for (var j = 0; j < ulArr.length; j++) {
+                if (minHeightUl.offsetHeight > ulArr[j].offsetHeight) {
+                    minHeightUl = ulArr[j];
+                }
+            }
+            minHeightUl.appendChild(li);
+        }
+    }
+    createImg(20);
+</script>
+</body>
+</html>

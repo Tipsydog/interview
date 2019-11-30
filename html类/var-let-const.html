@@ -48,11 +48,89 @@
     // }
     // console.log(value);
 
-    let value = 1;
-    {
-      let value = 2;
+    // let value = 1;
+    // {
+    //   let value = 2;
+    // }
+    // value = 3;
+    // let _value = 1;
+    // {
+    //   let value = 2;
+    // }
+    // value = 3;
+    var funcs = [];
+    for (let i = 0; i < 10; i++) {
+      funcs[i] = function () {
+        console.log(i);
+      };
     }
-    value = 3;
+    funcs[0](); // 0
+
+    var funcs = [];
+    var _loop = function _loop(i) {
+      funcs[i] = function () {
+        console.log(i);
+      };
+    };
+    for (var i = 0; i < 10; i++) {
+      _loop(i);
+    }
+    funcs[0](); // 0
+  </script>
+  <script>
+    var num = 1111
+    var arrStr1 = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
+    var arrStr2 = ["", "万", "亿"]
+    var str1='',str2=''
+    var zero = true
+    var flag = 0
+    while(num > 0){
+      var v = num%10
+      if(num ===0){
+        if(!zero){
+          zero = true
+          str2 = arrStr1[v] + str2
+        }else{
+          zero = false
+          str1 = arrStr1[v]
+          str1 += arrStr2[flag]
+          str2 = str1 + str2
+        }
+        flag ++
+        num = Math.floor(num/10)
+      }
+      return str2
+    }
+    console.log(str2)
+    
+  </script>
+  <script>
+    function SectionToChinese(section){
+     var chnNumChar = ["零","一","二","三","四","五","六","七","八","九"];
+     var chnUnitChar = ["","十","百","千","万","亿","万亿","亿亿"];
+     var strIns = '', chnStr = '';
+     var unitPos = 0;
+     var zero = true;
+     while(section > 0){
+         var v = section % 10;
+         if(v === 0){
+              if(!zero){
+                   zero = true;
+                   chnStr = chnNumChar[v] + chnStr;
+              }
+         }else{
+               zero = false;
+               strIns = chnNumChar[v];
+               strIns += chnUnitChar[unitPos];
+               chnStr = strIns + chnStr;
+         }
+         unitPos++;
+         section = Math.floor(section / 10);
+      }
+      return chnStr;
+}
+SectionToChinese(1234);   //'一千二百三十四'
+
   </script>
 </body>
 

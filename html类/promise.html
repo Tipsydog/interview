@@ -11,21 +11,21 @@
 <body>
   <script>
     // // promsie语法
-    // var src = 'url'
-    // function loadImg(src) {
-    //   const promise = new Promise(function (reslove, reject) {
-    //     var img = document.createElement('img')
-    //     img.onload = function () {
-    //       reslove(img)
-    //     }
-    //     img.onerror = function () {
-    //       reject('图片加载失败')
-    //     }
-    //     img.src = src
-    //   })
-    //   return promise
-    // }
-    // var result = loadImg(src)
+    var src = 'url'
+    function loadImg(src) {
+      const promise = new Promise(function (reslove, reject) {
+        var img = document.createElement('img')
+        img.onload = function () {
+          reslove(img)
+        }
+        img.onerror = function () {
+          reject('图片加载失败')
+        }
+        img.src = src
+      })
+      return promise
+    }
+    var result = loadImg(src)
 
     // result.then(function (img) {
     //   console.log(img.width)
@@ -135,6 +135,51 @@
     makaPromiseList(urlArr, makeRequest).then((ret) => {
       console.log(ret)
     });
+  </script>
+
+//手写ajax
+  <script>
+  function ajax(params){
+    var method = params.method.toLowerCase() || "get"
+    var url = params.url
+    var async = params.async != false
+    var data = params.data
+    var xhr = new XMLHttpRequest()
+    if(params.timeout && params.timeout>0){
+      xhr.timeout = params.timeout
+    }
+
+    return new Promise((reslove, reject) => {
+      xhr.ontimeout = () => {reject("请求超时")}
+      xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        //响应内容解析完成
+        if(xhr.status == 200){
+          //请求成功
+          reslove(xhr.responseText)
+        }else {
+          reject()
+        }
+      }
+    }
+    })
+    xhr.open(method, url, async)
+    xhr.send(null) // 这里只支持get请求，如果是post还需要其他设置详见：https://www.jianshu.com/p/d644c398be06
+  }
+  //调用方式
+  ajax({
+    url: 'your request url',
+    method: 'get',
+    async: true,
+    timeout: 1000,
+    data: {
+        test: 1,
+        aaa: 2
+    }
+  }).then(
+    res => console.log('请求成功: ' + res), 
+    err => console.log('请求失败: ' + err)
+  )
   </script>
 </body>
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>求二叉树最大宽度</title>
+</head>
+
+<body>
+  <script>
+    function maxWidthOfBinaryTree(root) {
+      if (!root) {
+        return 0;
+      }
+      let res = [], maxWidth = 1;
+      recusion(root, 0, 0);
+      return maxWidth;
+
+// num是每个节点的编号，level是节点所在的层
+      function recusion(root, level, num) {
+  //如果这层存在，直接push节点编号进去，如果不存在，新创建一个数组：定义res[level] = [num]
+        if (res[level]) {
+          res[level].push(num);
+        } else {
+          res[level] = [num];
+        }
+        let tempArr = res[level];
+        // 计算level层的宽度，取level层最后一个值 减去 level层第一个值 再+1
+        let tempWidth = tempArr[tempArr.length - 1] - tempArr[0] + 1;
+        if (tempWidth > maxWidth) {
+          maxWidth = tempWidth;
+        }
+        if (root.left) {
+          recusion(root.left, level + 1, num * 2 + 1);
+        }
+        if (root.right) {
+          recusion(root.right, level + 1, num * 2 + 2);
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

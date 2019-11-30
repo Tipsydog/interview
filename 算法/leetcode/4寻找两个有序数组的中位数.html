@@ -13,7 +13,7 @@
     var m = nums2.length;
     var left = (n + m + 1) / 2;
     var right = (n + m + 2) / 2;
-    //一个小技巧：将偶数和奇数的情况合并，如果是奇数，会求两次同样的 k 。
+    //一个小技巧：将偶数和奇数的情况合并，如果是奇数，会求两次同样的 k 
     return (
       getKth(nums1, 0, n - 1, nums2, 0, m - 1, left) + getKth(nums1, 0, n - 1, nums2, 0, m - 1, right)
       ) * 0.5;  

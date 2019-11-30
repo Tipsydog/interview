@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //将数字（整数）转为汉字，从零到一亿亿，需要小数的可自行截取小数点后面的数字直接替换对应arr1的读法就行了
+    function convertToChinaNum(num) {
+      var arr1 = new Array('零', '一', '二', '三', '四', '五', '六', '七', '八', '九');
+      var arr2 = new Array('', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿');//可继续追加更高位转换值
+      if (!num || isNaN(num)) {
+        return "零";
+      }
+
+      var numArr = num.toString().split("")
+      console.log(numArr)
+      var result = "";
+      for (var i = 0; i < numArr.length; i++) {
+        var des_i = numArr.length - 1 - i;  //从个位开始挨个取数
+        result = arr2[i] + result;  // 添加单位
+
+        var numIndex = numArr[des_i];    // 找到数字对应在arr1中的索引
+        result = arr1[numIndex] + result; // 拼接字符串
+
+      }
+      console.log("未完成："+ result)
+      // 到这里输出的是"三十二亿零千零百一十二万零千四百五十二"
+      
+      //将【零千、零百】换成【零】 【十零】换成【十】
+      result = result.replace(/零(千|百|十)/g, '零').replace(/十零/g, '十');
+      //合并中间多个零为一个零
+      result = result.replace(/零+/g, '零');
+      //将【零亿】换成【亿】【零万】换成【万】
+      result = result.replace(/零亿/g, '亿').replace(/零万/g, '万');
+      //将【亿万】换成【亿】
+      result = result.replace(/亿万/g, '亿');
+      //移除末尾的零
+      result = result.replace(/零+$/, '')
+
+      // 下面两行是细节处理
+      //将【零一十】换成【零十】
+      result = result.replace(/零一十/g, '零十'); //貌似正规读法是零一十
+      //将【一十】换成【十】
+      result = result.replace(/^一十/g, '十');
+      return result;
+    }
+    console.log(convertToChinaNum(3200120452))
+
+    var num1 = 82452365122547854
+    var num2 = num1.replace(/(.{4})/g, "$1 ")
+  </script>
+</body>
+
+</html>

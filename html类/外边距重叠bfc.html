@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> //指定IE和Chrome使用最新版本渲染当前页面
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta data-vmid="keywords" name="keywords" content="掘金,稀土,Vue.js,微信小程序,Kotlin,RxJava,React Native,Wireshark,敏捷开发,Bootstrap,OKHttp,正则表达式,WebGL,Webpack,Docker,MVVM" data-vue-meta="true">
+  <meta data-vmid="description" name="description" content="掘金是一个帮助开发者成长的社区，是给开发者用的 Hacker News，给设计师用的 Designer News，和给产品经理用的 Medium。掘金的技术文章由稀土上聚集的技术大牛和极客共同编辑为你筛选出最优质的干货，其中包括：Android、iOS、前端、后端等方面的内容。用户每天都可以在这里找到技术世界的头条内容。与此同时，掘金内还有沸点、掘金翻译计划、线下活动、专栏文章等内容。即使你是 GitHub、StackOverflow、开源中国的用户，我们相信你也可以在这里有所收获。" data-vue-meta="true">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+  
+  <title>外边距</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+    }
+    /* 第一 */
+    body{
+      height: 100vh;
+      width: 100%;
+    }
+    .box{
+      padding-bottom: 100%;
+      height: 0;
+      width:50%;
+      background: red;
+      position: relative;
+    }
+    .item{
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background: aquamarine;
+    }
+    /* 第二 */
+    .divout{
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        margin-bottom: 50px;
+        margin-left: 5px;
+        /* float: left; */
+        /* position:absolute; */
+        border: 1px solid black;
+    }
+    .divout1{
+        width:50px;
+        height: 50px;
+        background: yellow;
+        margin-top: 80px;
+        float:left;
+        /* position:absolute; */
+        border: 1px solid black;
+    }
+    /* 第三 */
+    .box1{width:100px;background-color:red;float:left}	
+    .box2{width:100px;background-color:gray;float:right}	
+    .box3{background-color: aqua;margin: 0 110px;}
+
+    .box4{width:100px;background-color:red;position:absolute;left:0;top:22px}	
+    .box5{width:100px;background-color:gray;position:absolute;right:0;top:22px}	
+    .box6{background-color: aqua;}	
+
+    /* 第四 */
+    .kuang{
+      width: 100px;
+      height: 100px;
+      background: yellowgreen  ;
+      margin-bottom: 20px;
+      margin-left: 20px;
+    }
+    #kuang2{
+      float: left;
+    }
+    #kuang4{
+      float: left;
+    }
+</style>
+<style>
+
+</style>
+<body>
+<!-- 第一部分 -->
+  <!-- <div class="box">
+      <div class="item">
+          这里是所有子元素的容器
+      </div>
+  </div> -->
+
+<!-- 第二部分 -->
+  <!-- <div class="divout">        
+  </div>
+  <div class="divout1">        
+  </div> -->
+
+<!-- 第三部分 -->
+  <!-- <div class="box1">box1</div>
+		<div class="box2">box2</div>
+		<div class="box3">box3</div>
+    <div class="box4">box4</div>
+		<div class="box5">box5</div>
+    <div class="box6">box6</div> -->
+    
+<!-- 第四部分 -->
+<div class="kuang" id="kuang1">kuang1</div>
+<div class="kuang" id="kuang2">kuang2</div>
+<div class="kuang" id="kuang3" style="margin-bottom: 40px; overflow: hidden;">kuang3</div>
+<div class="kuang" id="kuang4">kuang4</div>
+<script>
+var b = new String("abc")
+b instanceof String // true
+String instanceof String // false
+String instanceof Function // true
+String instanceof Object // true
+b instanceof Function // false
+
+</script>
+</body>
+</html>

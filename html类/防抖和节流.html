@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>防抖和节流</title>
+  <style type="text/css">
+  .div{
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    color: #fff;
+    background: #ccc;
+    font-size: 80px;
+    margin-bottom: 50px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="div" id="content1"></div>
+  <div class="div" id="content2"></div>
+ 
+<!-- // 防抖debounce   -->
+<script>
+let num =1
+let content = document.getElementById('content1')
+
+function count (e){
+  content.innerHTML = num++
+  console.log(this, e)
+}
+
+// 所谓防抖，就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。
+function debounce (func, wait){
+  let timeout
+  return function(){
+    let _this = this    // 使用apply将this指向正确的div，否则上方console.log的是window
+    let args = arguments  // 如果不绑定args，console.log的e是undefined
+    if(timeout){clearTimeout(timeout)}
+
+    timeout = setTimeout(()=>{
+      func.apply(_this, args)
+    },wait)
+  }
+}
+// 立即执行的防抖
+function debounceImmediate (func, wait){
+  let timeout
+  return function(){
+    let _this = this    // 使用apply将this指向正确的div，否则上方console.log的是window
+    let args = arguments  // 如果不绑定args，console.log的e是undefined
+    if(timeout){clearTimeout(timeout)}
+
+    let callNow = !timeout
+    timeout = setTimeout(()=>{
+      timeout = null
+    },wait)
+    if(callNow) func.apply(_this, args)
+  }
+}
+content.onmousemove = debounce(count, 1000)
+</script> 
+
+<!-- // 节流throttle -->
+<script>
+let num2 =1
+let content2 = document.getElementById('content2')
+
+function count (e){
+  content2.innerHTML = num2++
+  console.log(this, e)
+}
+//立即执行
+function throttle(func, wait){
+  let previous = 0
+  return function(){
+    let now = Date.now()
+    let _this = this
+    let args = arguments
+    if(now - previous > wait){
+      func.apply(_this,args)
+      previous = now
+    }
+  }
+}
+
+// 非立即执行
+function throttleTimer(func, wait){
+  let timeout
+  return function(){
+    let now = Date.now()
+    let _this = this
+    let args = arguments
+
+    if(!timeout){
+      timeout = setTimeout(()=>{
+        timeout = null
+        func.apply(_this, args)
+      },wait)
+    }
+  }
+}
+
+content2.onmousemove = throttle(count, 1000)
+</script> 
+</body>
+</html>

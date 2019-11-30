@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件代理</title>
+</head>
+<body>
+    <ul>
+        <li>0</li>
+        <li>1</li>
+        <!-- 假设中间还有无数li标签 -->
+        <li>100</li>
+    </ul>
+
+    <ul>
+        <li id="1">
+            <span>span元素</span>
+        </li>
+        <li id="2">
+            <div>
+                <span>div包着一个span元素</span>
+            </div>
+        </li>
+        <li id="3">
+            <div>div元素</div>
+        </li>
+    </ul>
+    
+    <script>
+      // 最基础的绑定事件
+      var node = document.querySelectorAll('ul')[0]
+      Array.from(node).forEach(function(nodeItem,index){
+          nodeItem.addEventListener('click',function(){
+            alert('click'+index)
+        })
+      })
+      // 绑定在父节点
+      var ulNode = document.getElementsByTagName('ul')[0]
+      ulNode.addEventListener('click', function(e){   // 这个e和下面的ev都是window.event.target
+        var ev = ev || window.event.target
+        if(ev.nodeName.toLowerCase()=='li'){
+          console.log(ev.innerHTML)
+        }
+      })
+      console.log(ulNode)
+
+      // 有子元素的递归绑定事件
+      var ulNode2 = document.getElementsByTagName('ul')[1]
+      ulNode2.addEventListener('click', function(){
+        var ev = ev || window.event.target
+        while(ev.nodeName !== ulNode2){
+          if(ev.nodeName.toLowerCase() == 'li'){
+            console.log(ev.id)
+            break
+          }
+          ev = ev.parentNode
+        }
+      })
+    </script>
+</body>
+</html>
