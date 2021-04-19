@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>29最长公共前缀</title>
+</head>
+
+<body>
+  <script>
+    var strs = ["flower", "flow", "flight"]
+    var longestCommonPrefix1 = function (strs) {
+      if (!strs || strs.length == 0) {
+        return '';
+      }
+      let firstStr = strs[0];
+      for (let i = 0; i < firstStr.length; i++) {
+        let prev = firstStr[i];
+        for (let j = 1; j < strs.length; j++) {
+          if (i == strs[j].length || strs[j][i] != prev) {
+            return firstStr.substring(0, i);
+          }
+        }
+      }
+      return firstStr;
+    };
+    console.log(longestCommonPrefix1(strs));
+    // 以第一个字符串为模板，按位比较之后的字符串，最后截取相同的（0，i）部分的字符串。（0，0）就返回空字符串
+
+
+    var longestCommonPrefix2 = function (strs) {
+      if (strs.length == 0) return "";
+      var prefix = strs[0];
+      for (var i = 1; i < strs.length; i++) {
+        while (strs[i].indexOf(prefix) != 0) {
+          prefix = prefix.slice(0, prefix.length - 1);
+          if (prefix.length === 0) return "";
+        }
+      }
+      return prefix;
+    };
+    console.log(longestCommonPrefix2(strs));
+//选取第一个字符串为模板，先和第二个字符串比较，截取二者最长相同字段继续和后面字符串做比较
+// indexOf工作原理：
+// "flow".indexOf("fl”) == 0        "flow".indexOf("f”) == 0
+// "flow".indexOf("flw”) == -1    "flow".indexOf(“k”) == -1
+// "flow".indexOf("lo”) == 1        "flow".indexOf(“w”) == 3       "flow".indexOf("ow”) == 1
+
+  </script>
+</body>
+
+</html>

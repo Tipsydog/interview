@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const PENDDING = "PENDDING"
+    const FULFILLED = "FULFILLED"
+    const REJECTED = "REJECTED"
+
+    class Promise {
+      constructor(executor) {
+        this.status = PENDDING;
+        this.value = undefined;
+        this.reason = undefined;
+
+        let reslove = (value) => {
+          if (this.status == PENDDING) {
+            this.status = FULFILLED;
+            this.value = value;
+          }
+        }
+        let reject = (reason) => {
+          if (this.status == PENDDING) {
+            this.status = REJECTED;
+            this.reason = reason
+          }
+        }
+
+        try {
+          executor(reslove, reject)
+        } catch (error) {
+          reject(error)
+        }
+      }
+      then(onFullfilled, onRejected) {
+        if (this.status = FULFILLED) {
+          onFullfilled(this.value)
+        }
+        if (this.status = REJECTED) {
+          onRejected(this.reason)
+        }
+      }
+    }
+
+    const promise = new Promise((reslove, reject) => {
+      reslove('成功')
+    }).then( res => {console.log("success" + res)}, 
+             err => {console.log("error" + err)})
+
+  </script>
+</body>
+
+</html>

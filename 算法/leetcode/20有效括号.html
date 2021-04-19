@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>20有效括号</title>
+</head>
+<body>
+  <script>
+    var str = "(){}[]"
+    var map = {
+      "(" : ")",
+      "[" : "]",
+      "{" : "}"
+    }
+    var arr = []
+    var isValid = function (s){
+      for (var ch of s){
+        if(map.hasOwnProperty(ch)){
+          arr.push(ch)
+        }else{
+          if(ch != map[arr.pop()]){
+            return false
+            }
+        }
+      }
+      return !arr.length    //重点：排除如果都是左括号的情况
+    }
+    console.log(isValid(str))
+  </script>
+</body>
+</html>

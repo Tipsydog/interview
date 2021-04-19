@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>101对称二叉树</title>
+</head>
+<body>
+  <script>
+  var isSymmetric1 = function(root) {
+    if(root == null) return true
+    return foo(root.left, root.right)
+  };
+  function foo(leftNode, rightNode){
+    if(leftNode==null && rightNode==null) {return true}
+    if(leftNode==null || rightNode==null) {return false}
+    return leftNode.val == rightNode.val && foo(leftNode.left, rightNode.right) && foo(leftNode.right, rightNode.left)
+  }
+
+  var isSymmetric2 = function(root) {
+    if(root == null) return true
+    var stack = [root, root]
+    while(stack.length > 0){
+      let leftNode = stack.shift()
+      let rightNode = stack.shift()
+      if(leftNode == null && rightNode == null){continue}
+      if(leftNode == null || rightNode == null){return false}
+      if(leftNode.val != rightNode.val){return false}
+      stack.push(leftNode.left,rightNode.right,leftNode.right,rightNode.left)
+    }
+    return true
+  }
+
+  </script>
+</body>
+</html>

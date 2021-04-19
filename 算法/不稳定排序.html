@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>不稳定排序</title>
 </head>
+
 <body>
   <script>
-    var arr = [32,54,39,467,2,45674,2,3675,34,21,6,7,43,1,87,65,9,4]
+    var arr = [32, 54, 39, 467, 2, 45674, 2, 3675, 34, 21, 6, 7, 43, 1, 87, 65, 9, 4]
 
-// 选择
+    // 选择
     // function xuanze (arr){
     //   for(let i=0; i<arr.length-1; i++){
     //     let min = i
@@ -28,69 +30,70 @@
     // }
     // xuanze(arr)
 
-// 快排
+    // 快排
 
-      function kuaisu (arr, start, end){
-        if(start > end){return}
-        let i = start
-        let j = end
-        let pivot = arr[start]
+    function kuaisu(arr, start, end) {
+      if (start > end) { return }
+      let i = start
+      let j = end
+      let pivot = arr[start]
 
-        while (i !== j){
+      while (i !== j) {
         // if(start > end){return}
-          while(arr[j] >= pivot && i<j){    // 从右起找第一个小于pivot的数
-            j--
-          }
-          while(arr[i] <= pivot && i<j){    // 从左起找第一个大于pivot的数
-            i++
-          }
-          if (i < j) {                // 交换i-j
-             let tmp = arr[i];
-             arr[i] = arr[j];
-             arr[j] = tmp;
+        while (arr[j] >= pivot && i < j) {    // 从右起找第一个小于pivot的数
+          j--
+        }
+        while (arr[i] <= pivot && i < j) {    // 从左起找第一个大于pivot的数
+          i++
+        }
+        if (i < j) {                // 交换i-j
+          let tmp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = tmp;
         }
       }
 
       arr[start] = arr[i]
       arr[i] = pivot
 
-      kuaisu(arr, start, i-1)   // 递归左
-      kuaisu(arr, i+1, end)   // 递归右
+      kuaisu(arr, start, i - 1)   // 递归左
+      kuaisu(arr, i + 1, end)   // 递归右
     }
-    kuaisu(arr, 0, arr.length-1)
+    kuaisu(arr, 0, arr.length - 1)
     console.log(arr)
-    </script>
-    <script>
-    var arr = [32,54,39,467,2,45674,2,3675,34,21,6,7,43,1,87,65,9,4]
-    console.log(...arr,12,12,12,12)
+  </script>
+  <script>
+    var arr = [32, 54, 39, 467, 2, 45674, 2, 3675, 34, 21, 6, 7, 43, 1, 87, 65, 9, 4]
+    console.log(...arr, 12, 12, 12, 12)
     // 找出第k大数
-    function findK(arr, left, right, k){
+    function findK(arr, left, right, k) {
       var i = left
       var j = right
       var pivot = arr[left]
 
-      while(i!==j){
-        while(arr[j]<=pivot && i<j){ j-- }
-        while(arr[i]>=pivot && i<j){ i++ }
+      while (i !== j) {
+        while (arr[j] <= pivot && i < j) { j-- }
+        while (arr[i] >= pivot && i < j) { i++ }
 
-        if(i<j){
+        if (i < j) {
           let tmp = arr[i]
-          arr[i]=arr[j]
-          arr[j]=tmp
+          arr[i] = arr[j]
+          arr[j] = tmp
         }
       }
       arr[left] = arr[i]
-      arr[i]=pivot
-      if(i+1 == k){
+      arr[i] = pivot
+      if (i + 1 == k) {
         console.log(arr[i])
-      }else if (i+1 > k){
-        findK(arr, left, i-1, k)
-      }else{
-        findK(arr, i+1, right, k)
+      } else if (i + 1 > k) {
+        findK(arr, left, i - 1, k)
+      } else {
+        findK(arr, i + 1, right, k)
       }
     }
-    findK(arr, 0, arr.length-1, 8)
+    findK(arr, 0, arr.length - 1, 8)
     console.log(arr)
-    </script>
+  </script>
 </body>
+
 </html>

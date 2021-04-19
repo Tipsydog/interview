@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>226 翻转二叉树</title>
+</head>
+
+<body>
+  <script>
+    // 翻转一棵二叉树。
+
+    var invertTree = function (root) {
+      if (!root) return null
+      let temp = root.left;
+      root.left = invertTree(root.right)
+      root.right = invertTree(temp)
+      return root
+    };
+  </script>
+</body>
+
+</html>

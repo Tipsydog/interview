@@ -5,64 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="../JS/jquery3.2.0.js"></script>
-  <script type="text/javascript"></script>
-  <title>找出数组中任意两个差不大于n的集合</title>
-  <!-- <style>
-    div {
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 10px solid red;
-      border-top: 10px solid red;
-      border-bottom: 10px solid transparent;
-    }
-  </style> -->
-  <style>
-    .a {
-      color: blue
-    }
+  <title>Document</title>
 
-    .b {
-      color: red
-    }
-
-    .arrow {
-      border-top: 10px solid #000;
-      border-right: 10px solid transparent
-    }
-  </style>
 </head>
+<ul id="container">
+
+</ul>
 
 <body>
   <script>
-    function SectionToChinese(section){
-     var chnNumChar = ["零","一","二","三","四","五","六","七","八","九"];
-     var chnUnitChar = ["","十","百","千","万","亿","万亿","亿亿"];
-     var strIns = '', chnStr = '';
-     var unitPos = 0;
-     var zero = true;
-     while(section > 0){
-         var v = section % 10;
-         if(v === 0){
-              if(!zero){
-                   zero = true;
-                   chnStr = chnNumChar[v] + chnStr;
-              }
-         }else{
-               zero = false;
-               strIns = chnNumChar[v];
-               strIns += chnUnitChar[unitPos];
-               chnStr = strIns + chnStr;
-         }
-         unitPos++;
-         section = Math.floor(section / 10);
+    for (var i = 0; i < 5; i++) {
+      (function bibao(j) {
+        setTimeout(function () {
+          console.log(j)
+        }, j * 1000)
+      })(i)
+    }
+
+    function foo() {
+      var a = 2
+      function bar() {
+        console.log(a)
       }
-      return chnStr;
-}
-console.log(SectionToChinese(1234343))
-    
-    </script>
+      return bar
+    }
+    var baz = bar()     //这两行相当于 foo()()
+    baz()
+  </script>
 </body>
 
 </html>

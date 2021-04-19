@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>13罗马数字转整数</title>
+</head>
+<body>
+  <div id="str1">1</div>
+  <div id="str2">2</div>
+  <script>
+  var str = "IXLVIII"
+  var romanToInt = function (s){
+    const map = {
+        I : 1,
+        IV: 4,
+        V: 5,
+        IX: 9,
+        X: 10,
+        XL: 40,
+        L: 50,
+        XC: 90,
+        C: 100,
+        CD: 400,
+        D: 500,
+        CM: 900,
+        M: 1000
+    };
+    var result = 0;
+    for(let i=0; i<s.length;){
+      if(i+1<s.length && map[s.substring(i,i+2)]){
+        result += map[s.substring(i,i+2)];
+        i += 2;
+      }else{
+        result += map[s.substring(i,i+1)];
+        i++;
+      }
+    }
+    return result
+  }
+
+  var romanToInt2 = function(s) {
+    var map = {
+        "I":1,
+        "V":5,
+        "X":10,
+        "L":50,
+        "C":100,
+        "D":500,
+        "M":1000
+    }
+    var result = 0;
+    for(let i = 0;i<s.length;i++){
+        map[s[i]] < map[s[i+1]] ? result -= map[s[i]] : result += map[s[i]]
+    }
+    return result;
+};
+
+var romanToInt3 = function(s) {
+    const maps = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    }
+    let ins = 0;
+    let pre = maps[s[0]];
+    for (let i = 1; i < s.length; i++) {
+        const value = maps[s[i]]
+        if (value > pre) {
+            ins -= pre
+        } else {
+            ins += pre
+        }
+        pre = value
+    }
+    ins += pre;
+    return ins
+};
+
+console.log(romanToInt(str))  //67错误
+console.log(romanToInt2(str))  //47
+console.log(romanToInt3(str))  //47用时最低，因为每次循环少一个 map 查询
+
+var str1 = document.getElementById("str1")
+console.log(str1)
+str1.innerHTML = "fun1=  " + romanToInt(str)
+var str2 = document.getElementById("str2")
+str2.innerHTML = "fun2=  " + romanToInt2(str)
+  </script>
+</body>
+</html>

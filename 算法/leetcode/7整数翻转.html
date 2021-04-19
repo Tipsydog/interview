@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>7整数翻转</title>
+</head>
+
+<body>
+  <script>
+    var reverse = function (x) {
+      const edeg = 2 ** 31
+      const max = edeg - 1
+      const min = -edeg
+
+      const result = (x > 0 ? 1 : -1) * String(x).split('').filter(x => x !== '-').reverse().join('')
+      return result > max || result < min ? 0 : result
+
+    };
+    reverse(210)
+
+    var reverse2 = function (x) {
+      var max = Math.pow(2, 31) - 1;
+      var min = -Math.pow(2, 31);
+      var y = 0;
+      while (x !== 0) {
+        y = 10 * y + x % 10;
+        x = ~~(x / 10);       // 按位非，代替 Math.floor()
+      }
+      if (y > max) return 0;
+      if (y < min) return 0;
+      return y;
+
+    };
+    reverse2(210)
+
+//  按位非：
+// 当 num < 10 0000 0000时
+// ~num = -num - 1
+// 对于浮点数，则会直接舍弃小数部分    
+  </script>
+</body>
+
+</html>

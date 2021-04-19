@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>1两数之和</title>
+</head>
+
+<body>
+  <script>
+    var nums = [2, 7, 11, 15], target = 9
+    var twoSum = function (nums, target) {
+      var arr =[]
+      for(let i=0; i<nums.length; i++){
+        var diff = target - nums[i]
+        if(arr[diff] != undefined){
+          return [arr[diff],i]
+        }
+        arr[nums[i]] = i;
+      }
+    };
+  </script>
+</body>
+
+</html>
